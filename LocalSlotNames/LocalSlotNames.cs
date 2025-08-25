@@ -1,21 +1,17 @@
-﻿using NeosModLoader;
-using HarmonyLib;
+﻿using BepInEx;
+using BepInEx.NET.Common;
+using BepInExResoniteShim;
 using FrooxEngine;
 using FrooxEngine.UIX;
+using HarmonyLib;
 
 namespace LocalSlotNames
 {
-	public class LocalSlotNames : NeosMod
-	{
-		public override string Name => "LocalSlotNames";
-		public override string Author => "eia485";
-		public override string Version => "1.0.0";
-		public override string Link => "https://github.com/EIA485/NeosLocalSlotNames";
-		public override void OnEngineInit()
-		{
-			Harmony harmony = new Harmony("net.eia485.LocalSlotNames");
-			harmony.PatchAll();
-		}
+    [ResonitePlugin(PluginMetadata.GUID, PluginMetadata.NAME, PluginMetadata.VERSION, PluginMetadata.AUTHORS, PluginMetadata.REPOSITORY_URL)]
+    [BepInDependency(BepInExResoniteShim.PluginMetadata.GUID)]
+    public class LocalSlotNames : BasePlugin
+    {
+		public override void Load() => HarmonyInstance.PatchAll();
 
 		[HarmonyPatch(typeof(SlotInspector), "OnChanges")]
 		class LocalSlotNamesPatch
