@@ -18,7 +18,7 @@ namespace LocalSlotNames
         {
             static void Postfix(SyncRef<Text> ____slotNameText, SyncRef<Slot> ____rootSlot)
             {
-                if ((____slotNameText.Target != null) & (!____slotNameText.Target.Content.IsLinked && !____slotNameText.Target.Content.IsDriven))
+                if ((____slotNameText.Target != null) && (!____slotNameText.Target.Content.IsLinked && !____slotNameText.Target.Content.IsDriven))
                 {
                     ValueCopy<string> valueCopy = ____slotNameText.Target.Slot.AttachComponent<ValueCopy<string>>(true, null);
                     valueCopy.Source.Target = ____rootSlot.Target?.NameField;
