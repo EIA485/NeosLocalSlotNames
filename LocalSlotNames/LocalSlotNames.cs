@@ -21,7 +21,7 @@ namespace LocalSlotNames
                 if ((____slotNameText.Target != null) && (!____slotNameText.Target.Content.IsLinked && !____slotNameText.Target.Content.IsDriven))
                 {
                     ValueCopy<string> valueCopy = ____slotNameText.Target.Slot.AttachComponent<ValueCopy<string>>(true, null);
-                    valueCopy.Source.Target = ____rootSlot.Target?.NameField;
+                    valueCopy.Source.Target = ____rootSlot.Target?.Name_Field;
                     valueCopy.Target.Target = ____slotNameText.Target.Content;
                 }
             }
